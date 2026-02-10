@@ -19,12 +19,34 @@
   </style>
 </head>
 <body>
-  Verbindung wird überprüft…
+  <div id="status">Verbindung wird hergestellt…</div>
 
   <script>
+    const messages = [
+      "Verbindung wird hergestellt…",
+      "Server antwortet…",
+      "Zugriff wird überprüft…",
+      "IP-Adresse wird validiert…",
+      "Fast fertig…",
+      "Nur noch einen Moment…",
+      "Daten werden synchronisiert…",
+      "Abschluss läuft…",
+      "Bitte warten…",
+      "✔️ Erfolgreich"
+    ];
+
+    let index = 0;
+    const statusEl = document.getElementById("status");
+
+    const interval = setInterval(() => {
+      index = (index + 1) % messages.length;
+      statusEl.textContent = messages[index];
+    }, 1000); // jede Sekunde
+
     setTimeout(() => {
+      clearInterval(interval);
       window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-    }, 7000);
+    }, 10000); // 10 Sekunden
   </script>
 </body>
 </html>
